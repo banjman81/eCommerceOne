@@ -15,6 +15,16 @@ function Navbar() {
             </div>
             <ul style={{listStyleType: 'none', display: 'flex', justifyContent: 'space-evenly'}}>
                 <li>
+                    <Link to='/signup'>
+                        <h3>Sign Up</h3>
+                    </Link>
+                </li>
+                <li>
+                    <Link to='/signin'>
+                        <h3>Sign In</h3>
+                    </Link>
+                </li>
+                <li>
                     <Link to='/cart'>
                         <ShoppingBagIcon />
                     </Link>
