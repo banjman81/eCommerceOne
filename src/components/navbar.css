@@ -1,0 +1,14 @@
+li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 5px;
+}
+ul{
+    padding: 0;
+}
+
+.nav-container{
+    background-color: rgb(6, 107, 107);
+    color: white;
+}
