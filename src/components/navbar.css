@@ -18,3 +18,9 @@ ul{
     color: white;
     height: 75px;
 }
+
+.cart-p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

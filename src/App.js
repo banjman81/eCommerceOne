@@ -12,6 +12,7 @@ import { ProductsContext, CartContext } from './components/contexts/ProductsCont
 
 function App() {
   const [products, setProducts] = useState()
+  // let cart = []
   const [cart, setCart] = useState([])
 
   useEffect(() => {
@@ -25,16 +26,15 @@ function App() {
 
   const addToCart = (id) => {
     const addedItem = products.find(product => product.id == id)
-    console.log(addedItem.id)
-    setCart([...cart, addedItem])
-    console.log(cart)
+    addedItem.count = 1
+    setCart(cart => [...cart, addedItem])
   }
 
   return (
     <div className="App">
       <BrowserRouter>
+        <ProductsContext.Provider value={{products, addToCart, cart, setCart}}>
         <Navbar />
-        <ProductsContext.Provider value={{products, addToCart}}>
         <Routes>
             <Route path="/" element={<Home/>}></Route>
             <Route path="/cart" element={<Cart/>}></Route>
