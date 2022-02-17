@@ -9,23 +9,23 @@ function Navbar() {
     return (
         <div style={{display: 'flex', justifyContent:'space-between', padding: '0 10px'}} className="nav-container">
             <div>
-                <Link to='/'>
+                <Link className='link-nav' to='/'>
                     <h1>eCommerce</h1>
                 </Link>
             </div>
             <ul style={{listStyleType: 'none', display: 'flex', justifyContent: 'space-evenly'}}>
                 <li>
-                    <Link to='/signup'>
+                    <Link className='link-nav' to='/signup'>
                         <h3>Sign Up</h3>
                     </Link>
                 </li>
                 <li>
-                    <Link to='/signin'>
+                    <Link className='link-nav' to='/signin'>
                         <h3>Sign In</h3>
                     </Link>
                 </li>
                 <li>
-                    <Link to='/cart'>
+                    <Link className='link-nav' to='/cart'>
                         <ShoppingBagIcon />
                     </Link>
                 </li>
