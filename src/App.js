@@ -1,3 +1,4 @@
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -7,6 +8,8 @@ import SignUp from './components/pages/SignUp';
 import SignIn from './components/pages/SignIn';
 
 function App() {
+  const [products, setProducts] = useState()
+  const [cart, setCart] = useState()
   return (
     <div className="App">
       <BrowserRouter>
