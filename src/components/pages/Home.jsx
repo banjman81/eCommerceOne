@@ -6,13 +6,13 @@ import { Rating } from '@mui/material';
 
 function Home() {
 
-    const {products, addToCart} = useContext(ProductsContext)
+    const {products, dispatch} = useContext(ProductsContext)
     return (
         <div>
             <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start'}}>
                 {products ? products.map(product => {
                     return (
-                        <div style={{border: '1px solid black', margin: '5px auto', padding: '5px', borderRadius : '3px', width : '20%', height: '350px'}} key={product.id}>
+                        <div style={{border: '1px solid black', margin: '5px auto', padding: '5px', borderRadius : '3px', width : '20%', height: 'fit-content'}} key={product.id}>
                             <div style={{display:'flex',flexDirection: 'column', justifyContent: 'space-evenly'}}>
                                 <div style={{display:'flex', flexDirection: 'row-reverse'}}> 
                                     <FavoriteIcon />
@@ -26,7 +26,7 @@ function Home() {
                                 </div>
                                 <Rating style={{margin:'0 auto'}} value={product.rating.rate} readOnly/>
                                 <p style={{fontSize: '12px', color: 'rgb(6, 107, 107)'}}>{product.rating.count} Reviews</p>
-                                <Button variant="contained" onClick={() => addToCart(product.id)}>Add to cart</Button>
+                                <Button variant="contained" onClick={() => dispatch({type: 'addToCart', payload : product.id})}>Add to cart</Button>
                             </div>
                             
                         </div>

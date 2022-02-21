@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import '../navbar.css'
 
 function Cart() {
-    const {cart, setCart} = useContext(ProductsContext)
+    const {cart, dispatch} = useContext(ProductsContext)
     return (
         <div>
             <div>
@@ -29,7 +29,7 @@ function Cart() {
                 }): 'Empty Cart'}
             </div>
             <div style={{display: 'flex', flexDirection: 'column',justifyContent: 'space-evenly', width: '250px', height: '150px', margin: '10px auto'}}>
-                <Button color='error' variant="outlined" startIcon={<DeleteForeverIcon />} onClick={() => setCart([])}>Empty Cart</Button>
+                <Button color='error' variant="outlined" startIcon={<DeleteForeverIcon />} onClick={() => dispatch({type: 'emptyCart'})}>Empty Cart</Button>
                 <Link to='/' style={{textDecoration: 'none', width: '100%'}}>
                     <Button variant="outlined">Continue Shopping</Button>
                 </Link>
