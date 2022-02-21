@@ -6,22 +6,22 @@ import { Link } from 'react-router-dom';
 import '../navbar.css'
 
 function Cart() {
-    const {cart, setCart} = useContext(ProductsContext)
+    const {cart, dispatch} = useContext(ProductsContext)
     return (
         <div>
             <div>
                 { cart ? cart.map(item => {
                     return (
-                        <div key={item.id} style={{display: 'flex', justifyContent: 'space-evenly', border: '1px solid black', margin: '5px auto', width: '80%'}}>
+                        <div key={Math.random()*3.14} style={{display: 'flex', justifyContent: 'space-evenly', border: '1px solid black', margin: '5px auto', width: '80%'}}>
                             <img src={item.image} alt="" width="50px"/>
                             <div style={{width: '50%'}}>
                                 <h5>{item.title}</h5>
                             </div>
                             <div style={{display: 'flex', justifyContent: 'space-evenly', width: '20%', textAlign: 'center'}}>
                                 <p className="cart-p">{item.price}</p>
-                                <p className="cart-p">{item.count}x</p>
+                                <p className="cart-p">{item.quantity}x</p>
                                 <Button>
-                                    <DeleteForeverIcon color='error' />
+                                    <DeleteForeverIcon color='error' onClick={() => dispatch({type: 'removeFromCart', payload: item.id})}/>
                                 </Button>
                             </div>
                         </div>
@@ -29,7 +29,7 @@ function Cart() {
                 }): 'Empty Cart'}
             </div>
             <div style={{display: 'flex', flexDirection: 'column',justifyContent: 'space-evenly', width: '250px', height: '150px', margin: '10px auto'}}>
-                <Button color='error' variant="outlined" startIcon={<DeleteForeverIcon />} onClick={() => setCart([])}>Empty Cart</Button>
+                <Button color='error' variant="outlined" startIcon={<DeleteForeverIcon />} onClick={() => dispatch({type: 'emptyCart'})}>Empty Cart</Button>
                 <Link to='/' style={{textDecoration: 'none', width: '100%'}}>
                     <Button variant="outlined">Continue Shopping</Button>
                 </Link>
