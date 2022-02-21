@@ -33,22 +33,40 @@ function App() {
   function reducer(cart, action){
     switch(action.type){
       case 'addToCart':
-        console.log(cart)
         const foundItem = cart.findIndex(found => found.id === action.payload)
           if(foundItem != -1){
-            cart[foundItem].count = cart[foundItem].count + 1
-            return cart
+            console.log(cart[foundItem].quantity)
+            cart[foundItem].quantity = cart[foundItem].quantity + 1
           }else{
             const addedItem = products.find(product => product.id === action.payload)
-            addedItem.count = 1
-            return [...cart, addedItem]
+            addedItem.quantity = 1
+            cart = [...cart, addedItem]
           }
+          return cart
+
+      case 'removeFromCart':
+        return cart.filter(item => item.id !== action.payload)
+
       case 'emptyCart':
         return []
+        
       default:
-        return alert('blank reducer')
+        return cart
     }
   }
+
+  const mything = [{
+    "id": 1,
+    "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+    "price": 109.95,
+    "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+    "category": "men's clothing",
+    "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+    "rating": {
+      "rate": 3.9,
+      "count": 120
+    }
+  }]
   
   const [cart, dispatch] = useReducer(reducer, [])
 
