@@ -12,7 +12,6 @@ import { ProductsContext} from './components/contexts/ProductsContext';
 
 function App() {
   const [products, setProducts] = useState()
-  // const cart = []
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,25 +22,23 @@ function App() {
     fetchProducts()
   }, [])
 
-  // const addToCart = (id) => {
-  //   const addedItem = products.find(product => product.id == id)
-  //   addedItem.count = 1
-  //   setCart(cart => [...cart, addedItem])
-  // }
-
   function reducer(cart, action){
     switch(action.type){
       case 'addToCart':
-        const foundItem = cart.findIndex(found => found.id === action.payload)
-          if(foundItem != -1){
-            console.log(cart[foundItem].quantity)
-            cart[foundItem].quantity = cart[foundItem].quantity + 1
-          }else{
-            const addedItem = products.find(product => product.id === action.payload)
-            addedItem.quantity = 1
-            cart = [...cart, addedItem]
-          }
-          return cart
+        const foundItem = cart.find(found => found.id === action.payload.id)
+        if(!foundItem){
+          return  [...cart, {...action.payload , quantity : 1}]
+        }
+        // if(foundItem){
+        //   console.log(cart[foundItem].quantity)
+        //   const temp = cart[foundItem].quantity + 1
+        //   cart = cart.filter(item => item.id !== action.payload.id)
+        //   action.payload.quantity = temp
+        //   cart = [...cart, action.payload]
+        //   return cart
+        // }
+        const filteredCart = cart.filter(item => item.id !== action.payload.id)
+        return [...filteredCart, {...action.payload, quantity: foundItem.quantity + 1}]
 
       case 'removeFromCart':
         return cart.filter(item => item.id !== action.payload)

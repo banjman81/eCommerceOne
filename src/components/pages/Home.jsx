@@ -26,7 +26,7 @@ function Home() {
                                 </div>
                                 <Rating style={{margin:'0 auto'}} value={product.rating.rate} readOnly/>
                                 <p style={{fontSize: '12px', color: 'rgb(6, 107, 107)'}}>{product.rating.count} Reviews</p>
-                                <Button variant="contained" onClick={() => dispatch({type: 'addToCart', payload : product.id})}>Add to cart</Button>
+                                <Button variant="contained" onClick={() => dispatch({type: 'addToCart', payload : product})}>Add to cart</Button>
                             </div>
                             
                         </div>
